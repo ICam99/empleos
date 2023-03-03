@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Vacante {
 
+	//hice este comentario desde mi laptop
 	private Integer id;
 	private String nombre;
 	private String descripcion;
