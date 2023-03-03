@@ -10,11 +10,9 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.empleos.model.Categoria;
-import com.example.empleos.model.Vacante;
 import com.example.empleos.service.ICategoriasService;
 
 @Controller
@@ -32,7 +30,7 @@ public class CategoriasController {
 	}
 
 	@GetMapping("/create")
-	public String crear() {
+	public String crear(Categoria categoria) {
 		return "categorias/formCategoria";
 	}
 
