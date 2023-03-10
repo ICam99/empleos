@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.example.empleos.model.Vacante;
@@ -35,6 +36,21 @@ public class VacantesServiceJpa implements IVacantesService {
 	@Override
 	public void guardar(Vacante vacante) {
 		vacantesRepo.save(vacante);
+	}
+
+	@Override
+	public List<Vacante> buscarDestacadas() {
+		return vacantesRepo.findByDestacadoAndEstatusOrderByIdDesc(1, "Aprobada");
+	}
+
+	@Override
+	public void eliminar(Integer idVacante) {
+		vacantesRepo.deleteById(idVacante);
+	}
+
+	@Override
+	public List<Vacante> buscarByExample(Example<Vacante> example) {
+		return vacantesRepo.findAll(example);
 	}
 
 }

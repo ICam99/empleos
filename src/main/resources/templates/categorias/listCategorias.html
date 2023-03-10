@@ -47,10 +47,10 @@
                   <td th:text = "${categoria.nombre}">Recursos Humanos</td>
                   <td th:text= "${categoria.descripcion}">Trabajos relacionados con el area de RH.</td>
                   <td>
-                    <a href="#" class="btn btn-success btn-sm" role="button" title="Editar"><i class="fas fa-pencil-alt" aria-hidden="true">
-                      </i></a>
-                    <a href="#" class="btn btn-success btn-sm confirmar" role="button" title="Eliminar"><i class="fas fa-trash"
-                      aria-hidden="true"></i></a>
+                    <a th:href="@{/categorias/edit/{id}(id=${categoria.id})}" class="btn btn-success btn-sm" role="button" title="Editar">
+                      <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                    <a th:href="@{/categorias/delete/{id}(id=${categoria.id})}" class="btn btn-success btn-sm confirmar" role="button" 
+                      title="Eliminar"><i class="fas fa-trash" aria-hidden="true"></i></a>
                   </td>
                 </tr>                
               </tbody>
