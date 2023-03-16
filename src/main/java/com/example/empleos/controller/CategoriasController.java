@@ -3,6 +3,8 @@ package com.example.empleos.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.empleos.model.Categoria;
-import com.example.empleos.model.Vacante;
 import com.example.empleos.service.ICategoriasService;
 
 @Controller
@@ -28,6 +29,13 @@ public class CategoriasController {
 	public String mostrarIndex(Model model) {
 		List<Categoria> listaCategorias = serviceCategorias.buscarTodas();
 		model.addAttribute("categorias", listaCategorias);
+		return "categorias/listCategorias";
+	}
+
+	@GetMapping(value = "/indexPaginate")
+	public String mostrarIndexPaginado(Model model, Pageable page) {
+		Page<Categoria> lista = serviceCategorias.buscarTodas(page);
+		model.addAttribute("categorias", lista);
 		return "categorias/listCategorias";
 	}
 
